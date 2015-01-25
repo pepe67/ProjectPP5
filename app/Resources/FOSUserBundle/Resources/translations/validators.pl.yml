@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: Ta nazwa u¿ytkownika jest ju¿ zajêta
+        blank: Proszê podaæ nazwê u¿ytkownika
+        short: "[-Inf,Inf]Nazwa u¿ytkownika jest za krótka"
+        long: "[-Inf,Inf]Nazwa u¿ytkownika jest za d³uga"
+    email:
+        already_used: Podany email jest zajêty
+        blank: Proszê podaæ adres email
+        short: "[-Inf,Inf]Podany email jest za krótki"
+        long: "[-Inf,Inf]Podany email jest za d³ugi"
+        invalid: Podany adres email jest nieprawid³owy
+    password:
+        blank: Proszê podaæ has³o
+        short: "[-Inf,Inf]Podane has³o jest za krótkie"
+        mismatch: Has³a nie pasuj¹ do siebie
+    new_password:
+        blank: Proszê podaæ nowe has³o
+        short: "[-Inf,Inf]Podane nowe has³o jest za krótkie"
+    current_password:
+        invalid: Podane has³o jest nieprawid³owe
+    group:
+        blank: Proszê podaæ nazwê
+        short: "[-Inf,Inf]Podana nazwa jest za krótka"
+        long: "[-Inf,Inf]Podana nazwa jest za d³uga"

@@ -1,0 +1,88 @@
+# Group
+group:
+    edit:
+        submit: Edytuj grupê
+    show:
+        name: Nazwa grupy
+    new:
+        submit: Utwórz grupê
+    flash:
+        updated: Grupa zosta³a zaktualizowana
+        created: Grupa zosta³a utworzona
+        deleted: Grupa zosta³a usuniêta
+
+# Security
+security:
+    login:
+        username: "Nazwa u¿ytkownika:"
+        password: "Has³o:"
+        remember_me: Nie wylogowuj mnie
+        submit: Zaloguj
+
+# Profile
+profile:
+    show:
+        username: Nazwa u¿ytkownika
+        email: E-mail
+    edit:
+        submit: Edytuj u¿ytkownika
+    flash:
+        updated: Zapisano zmiany w profilu
+
+# Password change
+change_password:
+    submit: Zmieñ has³o
+    flash:
+        success: Has³o zosta³o zmienione
+
+# Registration
+registration:
+    check_email: Na adres %email% wys³ano wiadomoœæ e-mail. Zawiera ona link, na który nale¿y klikn¹æ, aby aktywowaæ konto.
+    confirmed: Gratulacje %username%, potwierdzi³eœ konto.
+    back: Powrót do poprzedniej strony.
+    submit: Zarejestruj
+    flash:
+        user_created: Stworzono u¿ytkownika
+    email:
+        subject: Witaj %username%!
+        message: |
+            Czeœæ %username%!
+            Aby potwierdziæ swoje konto - proszê przejœæ do %confirmationUrl%
+            Pozdrawiamy,
+            Zespó³.
+# Password resetting
+resetting:
+    password_already_requested: W przeci¹gu ostatnich 24 godzin nast¹pi³a ju¿ próba odzyskania has³a.
+    check_email: Na adres %email% wys³ano wiadomoœæ e-mail. Zawiera ona link w którego nale¿y klikn¹æ aby zresetowaæ has³o.
+    request:
+        invalid_username: Nazwa u¿ytkownika lub e-mail "%username%" nie istnieje.
+        username: "Nazwa u¿ytkownika lub e-mail:"
+        submit: Resetuj has³o
+    reset:
+        submit: Zmieñ has³o
+    flash:
+        success: Has³o zosta³o zresetowane
+    email:
+        subject: Witaj %username%!
+        message: |
+            Czeœæ %username%!
+            Aby zresetowaæ has³o - proszê przejœæ do %confirmationUrl%
+            Pozdrawiamy,
+            Zespó³.
+# Global strings
+layout:
+    logout: Wyloguj
+    login: Zaloguj
+    register: Zarejestruj
+    logged_in_as: Zalogowano jako %username%
+
+# Form field labels
+form:
+    group_name: "Nazwa grupy:"
+    username: "Nazwa u¿ytkownika:"
+    email: "E-mail:"
+    current_password: "Obecne has³o:"
+    password: "Has³o:"
+    password_confirmation: "Powtórz has³o:"
+    new_password: "Nowe has³o:"
+    new_password_confirmation: "Powtórz has³o:"
