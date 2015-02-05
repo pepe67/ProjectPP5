@@ -1,5 +1,20 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "ProjectBundle::layout.html.twig" %}
+
+{% block title %}Moje Konto{% endblock %}
 
 {% block fos_user_content %}
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+<div class="section group">
+<div class="col span_1_of_3"></div>
+<div class="col span_1_of_3">
+<div class="login-form">
+<h2>Moje konto</h2>
+	{% include "ProjectBundle:Profile:show_content.html.twig" %}
+	<span><a title="" href="/profile/edit"><input id="submit" type="submit" value="Edytuj dane" /></a></span>
+<h2><br><br>Edytuj hasło</h2>
+	<span><a title="" href="/profile/change-password"><input id="submit" type="submit" value="Zmień hasło" /></a></span>
+	
+</div>
+<div class="col span_1_of_3"></div>
+</div>
+</div>
 {% endblock fos_user_content %}

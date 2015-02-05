@@ -1,0 +1,37 @@
+movie:
+    path:     /
+    defaults: { _controller: "ProjectBundle:movie:index" }
+
+movie_show:
+    path:     /{id}/show
+    defaults:  
+        _controller: "ProjectBundle:movie:show"
+    requirements:
+        id: \d+ 
+
+movie_show_by_slug:
+    path:     /{slug}/show
+    defaults: { _controller: "ProjectBundle:movie:showBySlug" }
+
+movie_new:
+    path:     /new
+    defaults: { _controller: "ProjectBundle:movie:new" }
+
+movie_create:
+    path:     /create
+    defaults: { _controller: "ProjectBundle:movie:create" }
+    requirements: { _method: post }
+
+movie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ProjectBundle:movie:edit" }
+
+movie_update:
+    path:     /{id}/update
+    defaults: { _controller: "ProjectBundle:movie:update" }
+    requirements: { _method: post|put }
+
+movie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ProjectBundle:movie:delete" }
+    requirements: { _method: post|delete }

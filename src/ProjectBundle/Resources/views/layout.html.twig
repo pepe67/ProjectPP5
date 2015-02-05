@@ -16,20 +16,31 @@
 		<div class="headertop_desc">
 			<div class="account_desc">
 				<ul>
-					<li><a href="/register">Zarejestruj się</a></li>
-					<li><a href="/login">Zaloguj</a></li>
-					<li><a href="#">Koszyk</a></li>
-					<li><a href="#">Moje konto</a></li>
+					 {% if app.user.username is defined %}
+						<li><a href="/cart">Koszyk</a></li>
+						<li><a href="/profile">Moje konto</a></li>
+						<li><a href="/orders">Moje zamówienia</a></li>
+						<li><a href="/logout">Wyloguj</a></li>
+					{% else %}
+						<li><a href="/register">Zarejestruj się</a></li>
+						<li><a href="/login">Zaloguj</a></li>
+					{% endif %}					
 				</ul>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="{{ asset('bundles/project/images/logo.png') }}" alt="" /></a>
+				<a href="/"><img src="{{ asset('bundles/project/images/logo.png') }}" alt="" /></a>
 			</div>
 			  <div class="cart">
-			  	   <p>Hello ! Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
+			  	   <p>Witaj 
+				   {% if app.user.username is defined %}
+						{{ app.user.username }}
+					{% else %}
+						Gościu
+					{% endif %}
+				   ! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
 			  	   	<ul class="dropdown">
 							<li>you have no items in your Shopping cart</li>
 					</ul></div></p>
@@ -68,10 +79,15 @@
 	     	<div class="menu">
 	     		<ul>
 			    	<li class="active"><a href="index.html">Home</a></li>
-			    	<li><a href="about.html">About</a></li>
-			    	<li><a href="delivery.html">Delivery</a></li>
-			    	<li><a href="news.html">News</a></li>
-			    	<li><a href="contact.html">Contact</a></li>
+			    	<li><a href="about.html">O nas</a></li>
+			    	<li><a href="contact.html">Kontakt</a></li>
+					{% if app.user.username is defined %}
+						<li><a href="/cart">Koszyk</a></li>
+						<li><a href="/profile">Moje konto</a></li>
+						<li><a href="/logout">Wyloguj</a></li>
+					{% else %}
+						<li><a href="/login">Zaloguj</a></li>
+					{% endif %}	
 			    	<div class="clear"></div>
      			</ul>
 	     	</div>
