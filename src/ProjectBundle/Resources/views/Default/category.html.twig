@@ -1,5 +1,5 @@
 {% extends "ProjectBundle::layout.html.twig" %}
-{% block title %}Strona Głowna{% endblock %}
+{% block title %}Kategoria - {{ category.getName }}{% endblock %}
 
 {% block content %}
 
@@ -16,11 +16,8 @@
 <div class="header_bottom_right">					 
 	<div class="content_top">
 		<div class="heading">
-			<h3>Nowe filmy</h3>
+			<h3>Filmy z Kategorii {{ category.getName }}</h3>
 		</div>
-	<div class="see">
-		<p><a href="#">Wyświetl wszystkie nowe filmy</a></p>
-	</div>
 	<div class="clear"></div>
 </div>
 									

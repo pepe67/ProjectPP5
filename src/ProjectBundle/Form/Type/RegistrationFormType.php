@@ -9,8 +9,11 @@ class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+		
         // add your custom field
-        $builder->add('imie');
+        $builder->add('imie')
+				->add('nazwisko');
+		
     }
 
     public function getParent()
@@ -20,6 +23,6 @@ class RegistrationFormType extends AbstractType
 
     public function getName()
     {
-        return 'project_user_registration';
+        return 'acme_user_registration';
     }
 }
