@@ -1,0 +1,160 @@
+{% extends "ProjectBundle::layout.html.twig" %}
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block content %}
+<div class="header_bottom_left">				
+	<div class="categories">
+		<ul>
+			<h3>Kategorie</h3>
+			{% for category in categories %}
+				<li><a href="/category/{{category.name}}/show">{{category.name}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>					
+</div>
+<div class="header_bottom_right">					 
+	<div class="content_top">
+		<div class="heading">
+			<h3>{{ movie.title }} </h3>
+		</div>
+	<div class="clear"></div>
+</div>
+
+<div class="section group">
+
+    <!--<h1>Thread</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ movie.id }}</td>
+            </tr>
+			<tr>
+                <th>CatId</th>
+                <td>{{ movie.category }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ movie.title }}</td>
+            </tr>
+            <tr>
+                <th>About</th>
+                <td>{{ movie.aboutmovie }}</td>
+            </tr>
+            <tr>
+                <th>Review</th>
+                <td>{{ movie.review }}</td>
+            </tr>
+			<tr>
+                <th>URL</th>
+                <td>{{ movie.posterURL }}</td>
+            </tr>
+			<tr>
+                <th>Price</th>
+                <td>{{ movie.price }}</td>
+            </tr>
+			<tr>
+                <th>Released</th>
+                <td>{{ movie.released|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ movie.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>-->
+	
+	<div class="cont-desc">
+				  <div class="product-details">				
+					<div class="grid images_3_of_2">
+						<div id="container">
+						   <div id="products_example">
+							   <div id="products">
+								<div class="slides_container">
+									<img src="{{ movie.posterURL }}" alt="{{ movie.title }}" />
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="desc span_3_of_2">
+					<h2>{{ movie.title }} </h2>					
+					<div class="price">
+						<p>Cena: <span>{{ movie.price }}</span> PLN</p>
+					</div>
+
+				<div class="share-desc">
+					<div class="button"><span><a href="#">Dodaj do koszyka</a></span></div>					
+					<div class="clear"></div>
+				</div>
+
+			</div>
+			<div class="clear"></div>
+		  </div>
+		<div class="product_desc">	
+			<div id="horizontalTab">
+				<ul class="resp-tabs-list">
+					<li>Opis</li>
+					<li>Nasza opinia</li>
+					<li>Opinie użytkowników</li>
+					<div class="clear"></div>
+				</ul>
+				<div class="resp-tabs-container">
+					<div class="product-desc">
+						<p>{{ movie.aboutmovie }}</p>					
+					</div>
+
+				 <div class="product-tags">
+						 <p>{{ movie.review }}</p>
+
+
+			    </div>	
+
+				<div class="review">
+					<h4>Lorem ipsum Review by <a href="#">Finibus Bonorum</a></h4>
+					 <ul>
+					 	<li>Price :<a href="#"><img src="images/price-rating.png" alt="" /></a></li>
+					 	<li>Value :<a href="#"><img src="images/value-rating.png" alt="" /></a></li>
+					 	<li>Quality :<a href="#"><img src="images/quality-rating.png" alt="" /></a></li>
+					 </ul>
+					 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+				  <div class="your-review">
+				  	 <h3>How Do You Rate This Product?</h3>
+				  	  <p>Write Your Own Review?</p>
+				  	  <form>
+					    	<div>
+						    	<span><label>Nickname<span class="red">*</span></label></span>
+						    	<span><input type="text" value=""></span>
+						    </div>
+						    <div><span><label>Summary of Your Review<span class="red">*</span></label></span>
+						    	<span><input type="text" value=""></span>
+						    </div>						
+						    <div>
+						    	<span><label>Review<span class="red">*</span></label></span>
+						    	<span><textarea> </textarea></span>
+						    </div>
+						   <div>
+						   		<span><input type="submit" value="SUBMIT REVIEW"></span>
+						  </div>
+					    </form>
+				  	 </div>				
+				</div>
+			</div>
+		 </div>
+	 </div>
+	    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+        });
+    });
+   </script>	
+</div>
+
+
+</div>
+{% endblock %}

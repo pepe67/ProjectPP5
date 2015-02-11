@@ -27,10 +27,25 @@ class DefaultController extends Controller
 
         $category = $em->getRepository('ProjectBundle:Category')->findOneByName($name);
 		
-		
+		$movies = $em->getRepository('ProjectBundle:Movie')->findBy(array( 'category' => $category->getId()));
+				
         return $this->render('ProjectBundle:Default:category.html.twig', array(
 			'categories' => $categories,
 			'category' => $category,
+			'movies' => $movies,
+		));
+    }
+	public function movieBySlugAction($slug)
+    {
+		$em = $this->getDoctrine()->getManager();
+		
+		$categories = $em->getRepository('ProjectBundle:Category')->findAll();
+		
+        $movie = $em->getRepository('ProjectBundle:Movie')->findOneBySlug($slug);
+				
+        return $this->render('ProjectBundle:Default:movie.html.twig', array(
+			'categories' => $categories,
+			'movie' => $movie,
 		));
     }
 }

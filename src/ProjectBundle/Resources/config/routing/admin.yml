@@ -1,3 +1,9 @@
 admin:
     path:     /
-    defaults: { _controller: "ProjectBundle:admin:index" }
+    defaults: { _controller: "ProjectBundle:Admin:index" }
+admin_movie:
+    resource: "@ProjectBundle/Resources/config/routing/admin/movie.yml"
+    prefix:   /movie
+admin_category:
+    resource: "@ProjectBundle/Resources/config/routing/admin/category.yml"
+    prefix:   /category
