@@ -27,6 +27,11 @@ class Movie
       */
     private $category;
 
+	/**
+      * @ORM\OneToMany(targetEntity="Comment", mappedBy="movie")
+      */
+	protected $comments;
+	
     /**
      * @var string
      *
@@ -343,4 +348,10 @@ class Movie
     {
         return $this->price;
     }
+	
+	public function __toString()
+	{
+		return $this->getPosterURL();
+	}
+	
 }
