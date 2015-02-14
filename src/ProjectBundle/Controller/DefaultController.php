@@ -42,8 +42,11 @@ class DefaultController extends Controller
 		$categories = $em->getRepository('ProjectBundle:Category')->findAll();
 		
         $movie = $em->getRepository('ProjectBundle:Movie')->findOneBySlug($slug);
-				
+			
+		$comments = $em->getRepository('ProjectBundle:Comment')->findBy(array('movie' => $movie->getId()));	
+		
         return $this->render('ProjectBundle:Default:movie.html.twig', array(
+			'comments' => $comments,
 			'categories' => $categories,
 			'movie' => $movie,
 		));
