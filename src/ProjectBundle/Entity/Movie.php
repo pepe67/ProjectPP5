@@ -354,4 +354,9 @@ class Movie
 		return $this->getPosterURL();
 	}
 	
+	public function __toStringTitle()
+	{
+		return $this->getTitle();
+	}
+	
 }

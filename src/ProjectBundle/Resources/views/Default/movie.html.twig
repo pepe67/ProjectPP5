@@ -118,7 +118,9 @@
 					<ul>
 			<h3>Komentarze</h3>
 			{% for commentvar in comments %}
-				<li>{{commentvar.comment}}</li>
+				{% if commentvar.isAccepted %}
+					<li>{{commentvar.comment}}</li>
+				{% endif %}
 			{% endfor %}
 		</ul>
 					
