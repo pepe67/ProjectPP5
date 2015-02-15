@@ -16,12 +16,12 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('comment')
-            ->add('isAccepted')
+            ->add('isAccepted', 'checkbox', array('required' => false,))
             ->add('movie', 'entity', array(
-					'label' => 'Kategoria:',
+					'label' => 'Nazwa filmu:',
 					'class' => 'ProjectBundle:Movie',
 					'multiple' => false,
-					'property' => 'id',
+					'property' => 'title',
 					//'query_builder' => function(EntityRepository $er) {
 					//	return $er->createQueryBuilder('u')
 					//		->orderBy('u.id', 'ASC');
