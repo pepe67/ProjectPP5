@@ -851,7 +851,7 @@ tbody tr:nth-of-type(odd) {
 		resize:none;
 		height:120px;		
 }
-.your-review input[type="submit"]{
+.your-review button[type="submit"]{
     font-size:1em;
 	padding:10px 15px;
 	font-family: 'ambleregular';

@@ -15,23 +15,20 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('comment')
+            ->add('comment', 'textarea', array(
+					'label' => 'Treść komentarza:'))
             ->add('isAccepted', 'checkbox', array('required' => false,))
-            //->add('movie', 'entity', array(
-			//		'label' => 'Nazwa filmu:',
-			//		'class' => 'ProjectBundle:Movie',
-			//		'multiple' => false,
-			//		'property' => 'title',
+            ->add('movie', 'entity', array(
+					'label' => 'Nazwa filmu:',
+					'class' => 'ProjectBundle:Movie',
+					'multiple' => false,
+					'property' => 'title',
 					//'query_builder' => function(EntityRepository $er) {
 					//	return $er->createQueryBuilder('u')
 					//		->orderBy('u.id', 'ASC');
 					//},
 					
-				//))
-				
-			->add('movie', 'text', array(
-				'data' => 'id',
-			))
+				))
         ;
     }
     

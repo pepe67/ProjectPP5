@@ -36,7 +36,7 @@ class CommentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            return $this->redirect($this->generateUrl('comment_show', array('id' => $entity->getId())));
+            return $this->redirect($this->getRequest()->headers->get('referer'));
         }
         return $this->render('ProjectBundle:Comment:new.html.twig', array(
             'entity' => $entity,

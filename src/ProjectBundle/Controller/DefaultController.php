@@ -56,15 +56,15 @@ class DefaultController extends Controller
         $movie = $em->getRepository('ProjectBundle:Movie')->findOneBySlug($slug);
 			
 		$comments = $em->getRepository('ProjectBundle:Comment')->findBy(array('movie' => $movie->getId()));	
-		
-		$movieId = $movie->getId();
-		
+				
 		$form = $this->createForm(new CommentType, new Comment(), array(
             'action' => $this->generateUrl('comment_create'),
             'method' => 'POST',
         ));
 		
-		$form->add('submit', 'submit', array('label' => 'Create'));
+		$form->add('movie', 'hidden', array('data' => $movie->getId()));
+		
+		$form->add('submit', 'submit', array('label' => 'Dodaj Komentarz'));
 		
         return $this->render('ProjectBundle:Default:movie.html.twig', array(
 			'comments' => $comments,
