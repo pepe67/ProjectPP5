@@ -15,6 +15,7 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+			->add('nickname','text', array('label' => 'Nick:', 'required' => true))
             ->add('comment', 'textarea', array(
 					'label' => 'Treść komentarza:'))
             ->add('isAccepted', 'checkbox', array('required' => false,))

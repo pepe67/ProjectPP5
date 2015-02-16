@@ -74,6 +74,28 @@ class Comment
     {
         return $this->comment;
     }
+	
+	/**
+     * Set nickname
+     *
+     * @param string $nickname
+     * @return Nickname
+     */
+	 public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+        return $this;
+    }
+    /**
+     * Get nickname
+     *
+     * @return string 
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+	
     /**
      * Set isAccepted
      *

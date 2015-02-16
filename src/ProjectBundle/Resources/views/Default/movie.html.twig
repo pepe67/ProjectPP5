@@ -68,7 +68,8 @@
 				
 					{% for commentvar in comments %}
 						{% if commentvar.isAccepted %}
-							<p> &#149; {{commentvar.comment}} </p>
+							
+							<p> &#149; <font color="red" style="italic"> {{commentvar.nickname}}:</font><br> {{commentvar.comment}} </p>
 						{% endif %}
 					{% endfor %}
 					</ul>

@@ -71,7 +71,7 @@ class User extends BaseUser
     }
 	public function setNazwisko($nazwisko)
     {
-        $this->imie = $nazwisko;
+        $this->nazwisko = $nazwisko;
 
         return $this;
     }
