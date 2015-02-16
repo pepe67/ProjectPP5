@@ -1,0 +1,40 @@
+{% extends "ProjectBundle::layout.html.twig" %}
+{% block title %}Moje zamówienia{% endblock %}
+
+
+{% block content %}
+
+    <h1>OrderMovie list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Zamówiono w dniu</th>
+				<th>Filmy</th>
+				<th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('project_orders_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.orderedAt %}{{ entity.orderedAt|date('Y-m-d') }}{% endif %}</td>
+                
+				<td>
+                <ul>
+					{% for movie in entity.movies %}
+					<li>{{ movie.title }} - <a href=""><b><u>Oglądaj</b></u></a></li>
+					{% endfor %}
+                    
+                </ul>
+                </td>
+				
+				<td>{{ entity.status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        
+    {% endblock %}

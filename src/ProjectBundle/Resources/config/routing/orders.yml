@@ -1,0 +1,37 @@
+project_orders:
+    path:     /all
+    defaults: { _controller: "ProjectBundle:MovieOrder:index" }
+
+project_orders_show:
+    path:     /{id}/show
+    defaults:  
+        _controller: "ProjectBundle:MovieOrder:show"
+    requirements:
+        id: \d+ 
+
+project_orders_myorders:
+    path:     /
+    defaults: { _controller: "ProjectBundle:MovieOrder:myOrders" }
+
+project_orders_new:
+    path:     /new
+    defaults: { _controller: "ProjectBundle:MovieOrder:new" }
+
+project_orders_create:
+    path:     /create
+    defaults: { _controller: "ProjectBundle:MovieOrder:create" }
+    requirements: { _method: post }
+
+project_orders_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ProjectBundle:MovieOrder:edit" }
+
+project_orders_update:
+    path:     /{id}/update
+    defaults: { _controller: "ProjectBundle:MovieOrder:update" }
+    requirements: { _method: post|put }
+
+project_orders_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ProjectBundle:MovieOrder:delete" }
+    requirements: { _method: post|delete }
