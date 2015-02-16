@@ -27,12 +27,24 @@ class Movie
       */
     private $category;
 
+	/**
+      * @ORM\OneToMany(targetEntity="Comment", mappedBy="movie")
+      */
+	protected $comments;
+	
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+	
+	    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -134,6 +146,48 @@ class Movie
         return $this->title;
     }
 
+	 /**
+     * Set slug
+     *
+     * @param string $title
+     * @return Movie
+     */
+    public function setSlug($slug)
+    {
+		//Get Movie Title
+		$title = $this->getTitle();
+		//Char for spacing words
+		$char = "-";
+		// Get movie ID for slug
+		$id = $this->getId();
+		
+		// Lower case the string and remove whitespace from the beginning or end
+       $str = trim(strtolower($title));
+
+       // Remove single quotes from the string
+       $str = str_replace("‘", '', $str);
+
+       // Every character other than a-z, 0-9 will be replaced with a single dash (-)
+       $str = preg_replace("/[^a-z0-9]+/", $char, $str);
+
+       // Remove any beginning or trailing dashes
+       $str = trim($str, $char);
+		
+		//Slug build by replaced and stripped words and movie id
+        $this->slug = $str."-".$id;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
     /**
      * Set aboutmovie
      *
@@ -270,5 +324,28 @@ class Movie
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     * @return Movie
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string 
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }
