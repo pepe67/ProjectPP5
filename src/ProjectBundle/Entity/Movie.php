@@ -1,9 +1,6 @@
 <?php
-
 namespace ProjectBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Movie
  *
@@ -26,7 +23,11 @@ class Movie
       * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
       */
     private $category;
-
+	/**
+      * @ORM\OneToMany(targetEntity="Comment", mappedBy="movie")
+      */
+	protected $comments;
+	
     /**
      * @var string
      *
@@ -40,7 +41,6 @@ class Movie
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
-
     /**
      * @var string
      *
@@ -54,7 +54,6 @@ class Movie
      * @ORM\Column(name="review", type="text")
      */
     private $review;
-
     /**
      * @var string
      *
@@ -67,7 +66,6 @@ class Movie
      * @ORM\Column(type="decimal", scale=2)
      */
     private $price;
-
 	 /**
      * @var \DateTime
      *
@@ -81,8 +79,6 @@ class Movie
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
-
-
     /**
      * Get id
      *
@@ -102,12 +98,9 @@ class Movie
     public function setCategoryId($categoryId)
     {
         $this->categoryId = $categoryId;
-
         return $this;
     }
-
     
-
     /**
      * Get categoryId
      *
@@ -117,7 +110,6 @@ class Movie
     {
         return $this->categoryId;
     }
-
     /**
      * Set title
      *
@@ -127,10 +119,8 @@ class Movie
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
-
     /**
      * Get title
      *
@@ -140,7 +130,6 @@ class Movie
     {
         return $this->title;
     }
-
 	 /**
      * Set slug
      *
@@ -158,22 +147,17 @@ class Movie
 		
 		// Lower case the string and remove whitespace from the beginning or end
        $str = trim(strtolower($title));
-
        // Remove single quotes from the string
        $str = str_replace("‘", '', $str);
-
        // Every character other than a-z, 0-9 will be replaced with a single dash (-)
        $str = preg_replace("/[^a-z0-9]+/", $char, $str);
-
        // Remove any beginning or trailing dashes
        $str = trim($str, $char);
 		
 		//Slug build by replaced and stripped words and movie id
         $this->slug = $str."-".$id;
-
         return $this;
     }
-
     /**
      * Get slug
      *
@@ -192,10 +176,8 @@ class Movie
     public function setAboutmovie($aboutmovie)
     {
         $this->aboutmovie = $aboutmovie;
-
         return $this;
     }
-
     /**
      * Get aboutmovie
      *
@@ -205,7 +187,6 @@ class Movie
     {
         return $this->aboutmovie;
     }
-
     /**
      * Set review
      *
@@ -215,10 +196,8 @@ class Movie
     public function setReview($review)
     {
         $this->review = $review;
-
         return $this;
     }
-
     /**
      * Get review
      *
@@ -228,7 +207,6 @@ class Movie
     {
         return $this->review;
     }
-
     /**
      * Set posterURL
      *
@@ -238,10 +216,8 @@ class Movie
     public function setPosterURL($posterURL)
     {
         $this->posterURL = $posterURL;
-
         return $this;
     }
-
     /**
      * Get posterURL
      *
@@ -251,7 +227,6 @@ class Movie
     {
         return $this->posterURL;
     }
-
     /**
      * Set released
      *
@@ -261,10 +236,8 @@ class Movie
     public function setReleased($released)
     {
         $this->released = $released;
-
         return $this;
     }
-
     /**
      * Get released
      *
@@ -274,7 +247,6 @@ class Movie
     {
         return $this->released;
     }
-
     /**
      * Set createdAt
      *
@@ -284,10 +256,8 @@ class Movie
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
-
     /**
      * Get createdAt
      *
@@ -297,7 +267,6 @@ class Movie
     {
         return $this->createdAt;
     }
-
     /**
      * Set category
      *
@@ -307,10 +276,8 @@ class Movie
     public function setCategory(\ProjectBundle\Entity\Category $category = null)
     {
         $this->category = $category;
-
         return $this;
     }
-
     /**
      * Get category
      *
@@ -320,7 +287,6 @@ class Movie
     {
         return $this->category;
     }
-
     /**
      * Set price
      *
@@ -330,10 +296,8 @@ class Movie
     public function setPrice($price)
     {
         $this->price = $price;
-
         return $this;
     }
-
     /**
      * Get price
      *
@@ -343,4 +307,10 @@ class Movie
     {
         return $this->price;
     }
+	
+	public function __toString()
+	{
+		return $this->getPosterURL();
+	}
+	
 }

@@ -1,0 +1,18 @@
+project_cart:
+    path:     /
+    defaults: { _controller: ProjectBundle:Default:showCart }
+project_setCart:
+    path:   /setCart/{id}
+    defaults: { _controller: ProjectBundle:Default:setCart }
+    methods:  [GET]
+project_getCart:
+    path:   /getCart
+    defaults: { _controller: ProjectBundle:Default:getCart }
+    methods:  [GET]
+project_delCart:
+    path:   /delCart/{id}
+    defaults: { _controller: ProjectBundle:Default:deleteFromCart }
+    methods:  [GET]
+project_clearCart:
+    path:   /clearCart
+    defaults: { _controller: ProjectBundle:Default:clearCart }

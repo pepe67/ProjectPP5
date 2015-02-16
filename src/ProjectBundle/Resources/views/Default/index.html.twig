@@ -3,17 +3,8 @@
 
 {% block content %}
 
+	{% include 'ProjectBundle:Default:menu.html.twig' %}
 
-<div class="header_bottom_left">				
-	<div class="categories">
-		<ul>
-			<h3>Kategorie</h3>
-			{% for category in categories %}
-				<li><a href="/category/{{category.name}}/show">{{category.name}}</a></li>
-			{% endfor %}
-		</ul>
-	</div>					
-</div>
 <div class="header_bottom_right">					 
 	<div class="content_top">
 		<div class="heading">

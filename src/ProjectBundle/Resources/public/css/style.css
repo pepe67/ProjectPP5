@@ -36,6 +36,23 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	background: #FFF;
 }
+tr { height: 50px; }
+td {
+vertical-align: middle;
+border-left: 1px solid #cdd;
+border-right: 1px solid #cdd;
+text-align: center;
+}
+table td:first-child {
+border-left: none;
+}
+
+table td:last-child {
+border-right: none;
+}
+tbody tr:nth-of-type(odd) {
+  background-color:#ccd;
+}
 .wrap {
 	width:80%;
 	margin: 0 auto;

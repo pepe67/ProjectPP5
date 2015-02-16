@@ -1,0 +1,10 @@
+<div class="header_bottom_left">				
+	<div class="categories">
+		<ul>
+			<h3>Kategorie</h3>
+			{% for category in categories %}
+				<li><a href="{{ path('category_show_by_name', {'name': category.name}) }}">{{category.name}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>					
+</div>
