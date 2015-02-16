@@ -36,6 +36,13 @@ class CommentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+			
+			$request->getSession()->getFlashBag()->add(
+                'notice',
+                'Dodano komentarz!'
+		
+            );
+			
             return $this->redirect($this->getRequest()->headers->get('referer'));
         }
         return $this->render('ProjectBundle:Comment:new.html.twig', array(

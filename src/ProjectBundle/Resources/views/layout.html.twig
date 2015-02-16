@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="{{ asset('bundles/project/css/style.css') }}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{{ asset('bundles/project/css/box.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
 
 
@@ -111,6 +112,12 @@
 
 		<div class="main">
 			<div class="content">
+			
+			{% for flashMessage in app.session.flashbag.get('notice') %}
+				<div class="alert-box notice"><span>Informacja:</span>	{{ flashMessage }}
+				</div>
+			{% endfor %}
+			
 				{% block content %}
 				{% block fos_user_content %}{% endblock %}
 				{% endblock %}

@@ -4,6 +4,7 @@ namespace ProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use ProjectBundle\Entity\Comment;
 use ProjectBundle\Form\CommentType;
 
@@ -79,12 +80,19 @@ class DefaultController extends Controller
 	// Dodanie filmu do koszyka
 	// routing /setCart/{id}
 	// Piotr Kozak
-	public function setCartAction($id)
+	public function setCartAction($id, Request $request)
 	{
 		$cartIDs = $this->get('session')->get('cartIDs');
 		$cartIDs[] = $id;
 		$this->get('session')->set('cartIDs', $cartIDs);
 		
+		if($cartIDs){
+		$request->getSession()->getFlashBag()->add(
+                'notice',
+                'Film Dodany do koszyka!'
+		
+            );
+		}
 		//Przekieruj na ostatnio oglądaną stronę
 		return $this->redirect($this->getRequest()->headers->get('referer'));
 	}
