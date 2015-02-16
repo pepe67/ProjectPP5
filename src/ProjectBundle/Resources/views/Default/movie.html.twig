@@ -64,16 +64,25 @@
 				<div class="review">
 					
 					 <h4>Komentarze</h4>
+					 
+				
 					{% for commentvar in comments %}
 						{% if commentvar.isAccepted %}
-							<p>{{commentvar.comment}}</p>
+							<p> &#149; {{commentvar.comment}} </p>
 						{% endif %}
 					{% endfor %}
-					
+					</ul>
 					<div class="clear"></div>
 					<div class="your-review">
 					<h4>Dodaj swój komentarz</h4>
-							{{ form(formcomment) }}
+							{# {{ form(formcomment) }} #}
+							{{ form_start(formcomment) }}
+								<div style="visibility: hidden>
+									{{ form_widget(formcomment.isAccepted) }}
+								</div>
+								{{ form_rest(formcomment) }}
+							{{ form_end(formcomment) }}
+							 
 					 </div>			
 				</div>
 			</div>

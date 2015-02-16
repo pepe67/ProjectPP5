@@ -31,6 +31,14 @@ class Comment
      * @ORM\Column(name="comment", type="text")
      */
     private $comment;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="nickname", type="text")
+     */
+    private $nickname;
+	
     /**
      * @var boolean
      *

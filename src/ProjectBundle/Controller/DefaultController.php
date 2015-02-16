@@ -64,7 +64,8 @@ class DefaultController extends Controller
         ));
 		
 		$form->add('movie', 'hidden', array('data' => $movie->getId()));
-		
+		//$form->add('isAccepted',null,array( 'attr'=>array('style'=>'display:none;')) )
+	
 		$form->add('submit', 'submit', array('label' => 'Dodaj Komentarz'));
 		
         return $this->render('ProjectBundle:Default:movie.html.twig', array(
