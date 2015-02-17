@@ -51,7 +51,8 @@ class MovieType extends AbstractType
 			->add('price', 'text', array(
                     'label' => 'Cena za wypożyczenie:'))
             ->add('released', 'date', array(
-                    'label' => 'Premiera:'))
+                    'label' => 'Premiera:',
+					'years' => range(date('Y') -50, date('Y'))))
             ->add('createdAt', 'date', array(
                     'label' => 'Dodano dnia:'))
 			->add('slug', 'hidden', array(
