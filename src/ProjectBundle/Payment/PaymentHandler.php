@@ -37,8 +37,7 @@ class PaymentHandler
 		)) {
 			// miejsce na wykonanie success handler;
 			
-			//return self::TRANSACTION_OK;
-			return $request->request->get('control');
+			return self::TRANSACTION_OK;
 		} else {
 			return self::TRANSACTION_ERROR;
 		}
