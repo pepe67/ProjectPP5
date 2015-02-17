@@ -4,63 +4,80 @@
 {% block content %}
 
 	{% include 'ProjectBundle:Default:menu.html.twig' %}
-
+<div class="secrion group">
 <div class="header_bottom_right">					 
 	<div class="content_top">
 		<div class="heading">
-			<h3>Nowe filmy</h3>
+			<h3>Najnowsze filmy</h3>
 		</div>
 	<div class="see">
-		<p><a href="#">Wyświetl wszystkie nowe filmy</a></p>
+		<p><a href="{{ path('project_latest_movies') }}">Wyświetl więcej nowych filmów</a></p>
 	</div>
 	<div class="clear"></div>
 </div>
 									
 <div class="section group">
 
-	<div class="grid_1_of_3 images_1_of_3">
-		<a href="preview.html"><img src="{{ asset('bundles/project/images/1.jpg') }}" alt="" /></a>
-		 <h2>Lorem Ipsum is simply </h2>
+	{% for row in movies|batch(3) %}
+	<div class="section group">
+    
+        {% for movie in row %}
+            
+                
+				<div class="grid_1_of_3 images_1_of_3">        
+		<a href="{{ path('movie_show_by_slug', {'slug': movie.slug}) }}"><h2>{{ movie.title }} </h2><img src="{{ movie.posterURL }}" alt="{{ movie.title }}" />
+		 </a>
 		<div class="price-details">
 			<div class="price-number">
-				<p><span class="rupees">0.87</span></p>
+				<p><span class="rupees">{{ movie.price }} zł</span></p>
 			 </div>
 			<div class="add-cart">								
-				<h4><a href="preview.html">Dodaj do koszyka</a></h4>
+				<h4><a href="{{ path('project_setCart', {'id': movie.id}) }}">Dodaj do koszyka</a></h4>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</div>
-	<div class="grid_1_of_3 images_1_of_3">
-		<a href="preview.html"><img src="{{ asset('1.jpg') }}" alt="" /></a>
-		 <h2>Lorem Ipsum is simply </h2>
-		<div class="price-details">
-			<div class="price-number">
-				<p><span class="rupees">0.87</span></p>
-			 </div>
-			<div class="add-cart">								
-				<h4><a href="preview.html">Dodaj do koszyka</a></h4>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-	<div class="grid_1_of_3 images_1_of_3">
-		<a href="preview.html"><img src="{{ asset('3.jpg') }}" alt="" /></a>
-		 <h2>Lorem Ipsum is simply </h2>
-		<div class="price-details">
-			<div class="price-number">
-				<p><span class="rupees">9.00</span></p>
-			</div>
-			<div class="add-cart">								
-				<h4><a href="preview.html">Dodaj do koszyka</a></h4>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-				
-</div>		
 
-		
+        {% endfor %}
+    </div>	
+{% endfor %}
+</div>
+
+
+<div class="content_bottom">					 
+		<div class="heading">
+			<h3>Naszym zdaniem najlepsze filmy</h3>
+		</div>
+	<div class="clear"></div>
+</div>
+	
+<div class="section group">
+
+	{% for row in bestmovies|batch(3) %}
+	<div class="section group">
+    
+        {% for movie in row %}
+            
+                
+				<div class="grid_1_of_3 images_1_of_3">        
+		<a href="{{ path('movie_show_by_slug', {'slug': movie.slug}) }}"><h2>{{ movie.title }} </h2><img src="{{ movie.posterURL }}" alt="{{ movie.title }}" />
+		 </a>
+		<div class="price-details">
+			<div class="price-number">
+				<p><span class="rupees">{{ movie.price }} zł</span></p>
+			 </div>
+			<div class="add-cart">								
+				<h4><a href="{{ path('project_setCart', {'id': movie.id}) }}">Dodaj do koszyka</a></h4>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+        {% endfor %}
+    </div>	
+{% endfor %}
+</div>
+	</div>	
 			 
 
 {% endblock %}

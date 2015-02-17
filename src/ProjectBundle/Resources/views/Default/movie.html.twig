@@ -32,6 +32,7 @@
 					<h2>{{ movie.title }} </h2>					
 					<div class="price">
 						<p>Cena: <span>{{ movie.price }}</span> PLN</p>
+						<p>Nasza ocena: <span>{{ movie.stars }}</span> gwiazdek</p>
 					</div>
 
 				<div class="share-desc">
@@ -52,6 +53,10 @@
 				</ul>
 				<div class="resp-tabs-container">
 					<div class="product-desc">
+						
+						<h2>Zwiastun</h2>
+						<p><iframe width="760" height="480"  src="https://www.youtube.com/embed/{{ movie.youtubeURL }}" frameborder="0" allowfullscreen></iframe></p>
+						
 						<p>{{ movie.aboutmovie }}</p>					
 					</div>
 

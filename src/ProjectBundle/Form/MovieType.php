@@ -39,8 +39,15 @@ class MovieType extends AbstractType
                     'label' => 'Opis Filmu:'))
             ->add('review', 'textarea', array(
                     'label' => 'Nasza opinia:'))
+			->add('stars', 'choice', array(
+                     'label' => 'Podaj ilość gwiazdek',
+                     'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                    'preferred_choices' => array('3')))
             ->add('posterURL', 'text', array(
                     'label' => 'Adres URL Plakatu:'))
+			->add('youtubeURL', 'text', array(
+                    'label' => 'Adres URL zwiastunu na youtube ( np. 80PjspvRoe4 ):',
+					'required' => false))
 			->add('price', 'text', array(
                     'label' => 'Cena za wypożyczenie:'))
             ->add('released', 'date', array(

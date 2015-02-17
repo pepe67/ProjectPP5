@@ -3,6 +3,7 @@
 namespace ProjectBundle\Payment;
 
 use Symfony\Component\HttpFoundation\Request;
+use ProjectBundle\Payment\SuccesHandler;
 
 class PaymentHandler
 {
@@ -37,7 +38,7 @@ class PaymentHandler
 		)) {
 			// miejsce na wykonanie success handler;
 			
-			return self::TRANSACTION_OK;
+			return succesMethod('4');
 		} else {
 			return self::TRANSACTION_ERROR;
 		}

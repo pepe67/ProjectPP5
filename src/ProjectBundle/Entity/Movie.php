@@ -41,6 +41,14 @@ class Movie
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="stars", type="integer")
+     */
+    private $stars;
+	
     /**
      * @var string
      *
@@ -60,6 +68,13 @@ class Movie
      * @ORM\Column(name="posterURL", type="string", length=255)
      */
     private $posterURL;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="youtubeURL", type="string", length=255)
+     */
+    private $youtubeURL;
 	
 	/**
      *
@@ -167,6 +182,28 @@ class Movie
     {
         return $this->slug;
     }
+	/**
+     * Set stars
+     *
+     * @param integer $stars
+     * @return Movie
+     */
+    public function setStars($stars)
+    {
+        $this->stars = $stars;
+
+        return $this;
+    }
+
+    /**
+     * Get stars
+     *
+     * @return integer 
+     */
+    public function getStars()
+    {
+        return $this->stars;
+    }
     /**
      * Set aboutmovie
      *
@@ -227,6 +264,28 @@ class Movie
     {
         return $this->posterURL;
     }
+	
+	/**
+     * Set posterURL
+     *
+     * @param string $posterURL
+     * @return Movie
+     */
+    public function setYoutubeURL($youtubeURL)
+    {
+        $this->youtubeURL = $youtubeURL;
+        return $this;
+    }
+    /**
+     * Get posterURL
+     *
+     * @return string 
+     */
+    public function getYoutubeURL()
+    {
+        return $this->youtubeURL;
+    }
+	
     /**
      * Set released
      *
