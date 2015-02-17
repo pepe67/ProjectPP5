@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'ProjectBundle::layout.html.twig' %}
 
-{% block body -%}
+{% block content %}
     <h1>Movie</h1>
 
     <table class="record_properties">
@@ -30,12 +30,12 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('movie') }}">
+        <a href="{{ path('admin_movie') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('movie_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('admin_movie_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>

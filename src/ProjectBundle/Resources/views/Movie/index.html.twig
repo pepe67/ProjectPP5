@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'ProjectBundle::layout.html.twig' %}
 
-{% block body -%}
+{% block content %}
     <h1>Movie list</h1>
 
     <table class="records_list">
@@ -25,10 +25,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('movie_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('admin_movie_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('movie_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('admin_movie_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -39,7 +39,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('movie_new') }}">
+            <a href="{{ path('admin_movie_new') }}">
                 Create a new entry
             </a>
         </li>

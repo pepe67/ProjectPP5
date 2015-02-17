@@ -7,3 +7,9 @@ admin_movie:
 admin_category:
     resource: "@ProjectBundle/Resources/config/routing/admin/category.yml"
     prefix:   /category
+admin_comment:
+    resource: "@ProjectBundle/Resources/config/routing/admin/comment.yml"
+    prefix:   /comment
+admin_orders:
+    resource: "@ProjectBundle/Resources/config/routing/admin/orders.yml"
+    prefix:   /orders

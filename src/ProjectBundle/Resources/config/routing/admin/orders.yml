@@ -1,0 +1,25 @@
+admin_project_orders:
+    path:     /
+    defaults: { _controller: "ProjectBundle:MovieOrder:index" }
+
+admin_project_orders_show:
+    path:     /{id}/show
+    defaults:  
+        _controller: "ProjectBundle:MovieOrder:show"
+    requirements:
+        id: \d+ 
+
+
+admin_project_orders_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ProjectBundle:MovieOrder:edit" }
+
+admin_project_orders_update:
+    path:     /{id}/update
+    defaults: { _controller: "ProjectBundle:MovieOrder:update" }
+    requirements: { _method: post|put }
+
+admin_project_orders_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ProjectBundle:MovieOrder:delete" }
+    requirements: { _method: post|delete }

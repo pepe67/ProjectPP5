@@ -60,7 +60,8 @@ class MovieOrderController extends Controller
             $em->flush();
             //Kasowanie zawartości koszyka
             $this->get('session')->set('cartIDs', array());
-            return $this->redirect($this->generateUrl('project_payment_pay'));
+            //return $this->redirect($this->generateUrl('project_payment_pay'));
+			return $this->redirect($this->generateUrl('project_orders_myorders'));
         }
 
         return $this->render('ProjectBundle:MovieOrder:new.html.twig', array(
@@ -193,7 +194,7 @@ class MovieOrderController extends Controller
     private function createEditForm(MovieOrder $entity)
     {
         $form = $this->createForm(new MovieOrderType(), $entity, array(
-            'action' => $this->generateUrl('project_orders_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_project_orders_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -222,7 +223,7 @@ class MovieOrderController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('project_orders_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_project_orders_edit', array('id' => $id)));
         }
 
         return $this->render('ProjectBundle:MovieOrder:edit.html.twig', array(
@@ -252,7 +253,7 @@ class MovieOrderController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('project_orders'));
+        return $this->redirect($this->generateUrl('admin_project_orders'));
     }
 
     /**
@@ -265,7 +266,7 @@ class MovieOrderController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('category_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('admin_project_orders_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

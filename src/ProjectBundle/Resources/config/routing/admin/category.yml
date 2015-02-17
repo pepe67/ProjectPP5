@@ -1,6 +1,13 @@
 admin_category:
     path:     /
     defaults: { _controller: "ProjectBundle:Category:index" }
+admin_category_show:
+    path:     /{id}/show
+    defaults:  
+        _controller: "ProjectBundle:Category:show"
+    requirements:
+        id: \d+ 
+
 admin_category_new:
     path:     /new
     defaults: { _controller: "ProjectBundle:Category:new" }

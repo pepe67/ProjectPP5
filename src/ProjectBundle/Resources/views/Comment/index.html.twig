@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'ProjectBundle::layout.html.twig' %}
 
-{% block body -%}
+{% block content %}
     <h1>Comment list</h1>
 
     <table class="records_list">
@@ -17,7 +17,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('comment_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('admin_comment_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
 				<td>{{ entity.nickname }}</td>
                 <td>{{ entity.comment }}</td>
 				<td>{{ entity.movie.__toStringTitle() }}</td>
@@ -25,10 +25,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('comment_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('admin_comment_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('comment_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('admin_comment_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -39,7 +39,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('comment_new') }}">
+            <a href="{{ path('admin_comment_new') }}">
                 Create a new entry
             </a>
         </li>

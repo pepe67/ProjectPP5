@@ -126,7 +126,7 @@ class CommentController extends Controller
     private function createEditForm(Comment $entity)
     {
         $form = $this->createForm(new CommentType(), $entity, array(
-            'action' => $this->generateUrl('comment_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_comment_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
         $form->add('submit', 'submit', array('label' => 'Update'));
@@ -148,7 +148,7 @@ class CommentController extends Controller
         $editForm->handleRequest($request);
         if ($editForm->isValid()) {
             $em->flush();
-            return $this->redirect($this->generateUrl('comment_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_comment_edit', array('id' => $id)));
         }
         return $this->render('ProjectBundle:Comment:edit.html.twig', array(
             'entity'      => $entity,
@@ -173,7 +173,7 @@ class CommentController extends Controller
             $em->remove($entity);
             $em->flush();
         }
-        return $this->redirect($this->generateUrl('comment'));
+        return $this->redirect($this->generateUrl('admin_comment'));
     }
     /**
      * Creates a form to delete a Comment entity by id.
@@ -185,7 +185,7 @@ class CommentController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('comment_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('admin_comment_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
