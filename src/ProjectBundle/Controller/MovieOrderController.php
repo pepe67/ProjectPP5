@@ -10,7 +10,7 @@ use ProjectBundle\Form\MovieOrderType;
 use Symfony\Component\HttpFoundation\Response;
 /**
  * OrderMovie controller.
- *
+ * Autor całości Piotr Kozak
  */
 class MovieOrderController extends Controller
 {
@@ -41,6 +41,7 @@ class MovieOrderController extends Controller
 
         return $this->render('ProjectBundle:Default:userorders.html.twig', array(
             'entities' => $entities,
+			'licznik' => count($entities),
         ));
     }
     /**
@@ -59,7 +60,7 @@ class MovieOrderController extends Controller
             $em->flush();
             //Kasowanie zawartości koszyka
             $this->get('session')->set('cartIDs', array());
-            return $this->redirect($this->generateUrl('project_orders_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('project_payment_pay'));
         }
 
         return $this->render('ProjectBundle:MovieOrder:new.html.twig', array(
@@ -77,12 +78,15 @@ class MovieOrderController extends Controller
      */
     private function createCreateForm(MovieOrder $entity)
     {
+		
+		
+		
         $form = $this->createForm(new MovieOrderType(), $entity, array(
             'action' => $this->generateUrl('project_orders_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
+		$form->add('valuePLN', 'hidden', array('label' => 'wart'));
+        $form->add('submit', 'submit', array('label' => 'Złóż Zamówienie'));
 
         return $form;
     }
@@ -114,6 +118,13 @@ class MovieOrderController extends Controller
         $entity->setUser($this->getUser());
         
         $entity->setMovies($movies);
+		
+		//Ustawienie ceny za zakup przesłanej w formularzu.
+		$summaryPrice = 0;
+		foreach ($movies as $movie)
+			$summaryPrice += $movie->getPrice();
+		
+		$entity->setValuePLN($summaryPrice);
 
       
 
@@ -259,5 +270,26 @@ class MovieOrderController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+	
+	 /**
+     * Akceptacja płatności.
+     * Piotr Kozak
+     */
+    public function paymentAcceptedAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('ProjectBundle:MovieOrder')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Brak takiego zamówienia!');
+        }
+		//zmiana statsu na zapłacony
+		$entity->setStatus('1');
+		//zapisujemy status
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('project_orders_myorders'));
     }
 }

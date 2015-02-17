@@ -49,6 +49,13 @@ class MovieOrder
      * @ORM\Column(name="status", type="string", length=255)
      */
     private $status;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="valuePLN", type="string", length=255)
+     */
+    private $valuePLN;
 
     public function __construct()
     {
@@ -133,6 +140,28 @@ class MovieOrder
     public function getStatus()
     {
         return $this->status;
+    }
+	
+	/**
+     * Set valuePLN
+     *
+     * @param string $valuePLN
+     * @return MovieOrder
+     */
+    public function setValuePLN($valuePLN)
+    {
+        $this->valuePLN = $valuePLN;
+        return $this;
+    }
+	
+    /**
+     * Get valuePLN
+     *
+     * @return string 
+     */
+    public function getValuePLN()
+    {
+        return $this->valuePLN;
     }
 	
     /**

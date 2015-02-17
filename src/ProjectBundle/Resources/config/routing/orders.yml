@@ -35,3 +35,7 @@ project_orders_delete:
     path:     /{id}/delete
     defaults: { _controller: "ProjectBundle:MovieOrder:delete" }
     requirements: { _method: post|delete }
+
+project_orders_accepted:
+    path:     /{id}/accepted
+    defaults: { _controller: "ProjectBundle:MovieOrder:paymentAccepted" }

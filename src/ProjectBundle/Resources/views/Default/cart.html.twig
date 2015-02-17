@@ -57,7 +57,9 @@
 					<div class="col span_1_of_3"></div>
 					<div class="col span_1_of_3">
 						{% if app.user.username is defined %}
-							<a href="{{ app.request.basepath }}/app_dev.php/#">zapłać</a>
+							<div class="add-cart">								
+								<h4><a href="{{ path('project_orders_new') }}">Kontynuuj zamawianie</a></h4>
+							</div>
 						{% else %}
 							<span>Nie masz konta? <a href="{{ path('fos_user_registration_register') }}">Zarejestruj się</a></span>
 							<span><br>Masz konto? <a href="{{ path('fos_user_security_login') }}">Zaloguj się</a></span>

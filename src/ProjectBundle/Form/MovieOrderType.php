@@ -17,7 +17,8 @@ class MovieOrderType extends AbstractType
             //->add('orderedAt')
             ->add('user', null, array( 'attr'=>array('style'=>'display:none;'), 'label_attr' => array('style'=>'display:none;'))) 
             ->add('movies',  null, array( 'attr'=>array('style'=>'display:none;'), 'label_attr' => array('style'=>'display:none;')))
-			->add('status',  'hidden' , array('data' => '0'))			
+			->add('status',  'hidden' , array('data' => '0'))
+			->add('valuePLN',  'hidden' , array('data' => '0'))
         ;
     }
     
