@@ -32,11 +32,15 @@
 					<h2>{{ movie.title }} </h2>					
 					<div class="price">
 						<p>Cena: <span>{{ movie.price }}</span> PLN</p>
-						<p>Nasza ocena: <span>{{ movie.stars }}</span> gwiazdek</p>
 					</div>
 
 				<div class="share-desc">
+							
 					<div class="button"><span><a href="{{ path('project_setCart', {'id': movie.id}) }}">Dodaj do koszyka</a></span></div>					
+						<p>Premiera: <span>{% if movie.released %}{{ movie.released|date('Y-m-d') }}{% endif %}</span></p>
+						<p>Dodano dnia: {% if movie.createdAt %}{{ movie.createdAt|date('Y-m-d') }}{% endif %}</p>
+						<p>Reżyser: <span>{{ movie.director }}</span></p>
+						<p>Nasza ocena: <span>{{ movie.stars }}</span> gwiazdek</p>
 					<div class="clear"></div>
 				</div>
 

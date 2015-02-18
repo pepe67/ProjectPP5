@@ -35,6 +35,8 @@ class MovieType extends AbstractType
 					},
 					
 				))
+			->add('director', 'text', array(
+                    'label' => 'Reżyser:'))
 			->add('aboutmovie', 'textarea', array(
                     'label' => 'Opis Filmu:'))
             ->add('review', 'textarea', array(
@@ -53,8 +55,6 @@ class MovieType extends AbstractType
             ->add('released', 'date', array(
                     'label' => 'Premiera:',
 					'years' => range(date('Y') -50, date('Y'))))
-            ->add('createdAt', 'date', array(
-                    'label' => 'Dodano dnia:'))
 			->add('slug', 'hidden', array(
                     'data' => 'a'))
 			;

@@ -76,6 +76,13 @@ class Movie
      */
     private $youtubeURL;
 	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="director", type="string", length=255)
+     */
+    private $director;
+	
 	/**
      *
      * @ORM\Column(type="decimal", scale=2)
@@ -346,6 +353,26 @@ class Movie
     {
         return $this->category;
     }
+	/**
+     * Set director
+     *
+     * @param string $director
+     * @return Movie
+     */
+    public function setDirector($director)
+    {
+        $this->director = $director;
+        return $this;
+    }
+    /**
+     * Get director
+     *
+     * @return string 
+     */
+    public function getDirector()
+    {
+        return $this->director;
+    }
     /**
      * Set price
      *
@@ -365,6 +392,12 @@ class Movie
     public function getPrice()
     {
         return $this->price;
+    }
+	
+	public function __construct()
+    {
+        // Ustawiamy date na aktualną
+        $this->createdAt = new \DateTime();
     }
 	
 	public function __toString()
