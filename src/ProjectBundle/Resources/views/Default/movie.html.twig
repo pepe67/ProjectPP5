@@ -83,8 +83,10 @@
 					{% endfor %}
 					</ul>
 					<div class="clear"></div>
-					<div class="your-review">
-					<h4>Dodaj swój komentarz</h4>
+					
+					{% if app.user.username is defined %}
+						<div class="your-review">
+						<h4>Dodaj swój komentarz</h4>
 							{# {{ form(formcomment) }} #}
 							{{ form_start(formcomment) }}
 								<div style="visibility: hidden>
@@ -93,7 +95,12 @@
 								{{ form_rest(formcomment) }}
 							{{ form_end(formcomment) }}
 							 
-					 </div>			
+						</div>
+					{% else %}
+						<h4>Zaloguj się by dodać komentarz </h4>
+					{% endif %}		
+					
+								
 				</div>
 			</div>
 		 </div>
