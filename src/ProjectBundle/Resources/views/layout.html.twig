@@ -6,7 +6,7 @@
 <link href="{{ asset('bundles/project/css/style.css') }}" rel="stylesheet" type="text/css" media="all"/>
 <link href="{{ asset('bundles/project/css/box.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-
+{% block head %}{% endblock %}
 
 <script type="text/javascript" src="{{ asset('bundles/project/js/jquery-1.7.2.min.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('bundles/project/js/move-top.js') }}"></script>
@@ -28,7 +28,7 @@
 					 {% if app.user.username is defined %}
 						<li><a href="{{ path('project_cart') }}">Koszyk</a></li>
 						<li><a href="{{ path('fos_user_profile_show') }}">Moje konto</a></li>
-						<li><a href="{{ app.request.basepath }}/app_dev.php/orders">Moje zamówienia</a></li>
+						<li><a href="{{ path('project_orders_myorders') }}">Moje zamówienia</a></li>
 						<li><a href="{{ path('fos_user_security_logout') }}">Wyloguj</a></li>
 					{% else %}
 						<li><a href="{{ path('fos_user_registration_register') }}">Zarejestruj się</a></li>
@@ -45,7 +45,7 @@
 			  <div class="cart">
 			  	   <p>Witaj 
 				   {% if app.user.username is defined %}
-						{{ app.user.username }}
+						{{ app.user.imie }} ({{ app.user.username }})
 					{% else %}
 						Gościu
 					{% endif %}
@@ -88,8 +88,8 @@
 	     	<div class="menu">
 	     		<ul>
 			    	<li class="active"><a href="{{ path('project_homepage') }}">Home</a></li>
-			    	<li><a href="{{ app.request.basepath }}/app_dev.php/about">O nas</a></li>
-			    	<li><a href="{{ app.request.basepath }}/app_dev.php/contact">Kontakt</a></li>
+			    	<li><a href="#">O nas</a></li>
+			    	<li><a href="#">Kontakt</a></li>
 					{% if app.user.username is defined %}
 						<li><a href="{{ path('project_cart') }}">Koszyk</a></li>
 						<li><a href="{{ path('fos_user_profile_show') }}">Moje konto</a></li>
@@ -133,9 +133,9 @@
 				<div class="col_1_of_4 span_1_of_4">
 						<h4>Informacje</h4>
 						<ul>
-						<li><a href="{{ app.request.basepath }}/app_dev.php/about">O nas</a></li>
-						<li><a href="{{ app.request.basepath }}/app_dev.php/contact">Kontakt</a></li>
-						<li><a href="{{ app.request.basepath }}/app_dev.php/delivery">Dostawa i zworty</a></li>
+						<li><a href="#">O nas</a></li>
+						<li><a href="#">Kontakt</a></li>
+						<li><a href="#">Dostawa i zworty</a></li>
 						</ul>
 					</div>
 				<div class="col_1_of_4 span_1_of_4">
@@ -154,8 +154,8 @@
 							<li><a href="{{ path('fos_user_security_login') }}">Zaloguj</a></li>
 							<li><a href="{{ path('fos_user_registration_register') }}">Zarejestruj się</a></li>
 							<li><a href="{{ path('project_cart') }}">Koszyk</a></li>
-							<li><a href="{{ app.request.basepath }}/app_dev.php/track">Śledź zamówienie</a></li>
-							<li><a href="{{ app.request.basepath }}/app_dev.php/contact">Kontakt</a></li>
+							<li><a href="#">Śledź zamówienie</a></li>
+							<li><a href="#">Kontakt</a></li>
 						</ul>
 				</div>
 				<div class="col_1_of_4 span_1_of_4">

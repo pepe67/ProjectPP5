@@ -1,0 +1,66 @@
+{% extends "ProjectBundle::layout.html.twig" %}
+{% block title %}Moje zamówienia{% endblock %}
+
+
+{% block content %}
+
+    <div class="section group">
+		<div class="content_top">
+			<div class="heading">
+				<h3>Moje zamówienia i filmy</h3>
+			</div>
+		<div class="clear"></div>
+	</div>
+		
+	<div class="section group">
+		
+		{% if licznik == 0 %}
+			<div class="section group">
+		<div class="content_top">
+			
+				<span>Nie masz żanych zamówień i wykupionych filmów!</span>
+			
+		<div class="clear"></div>
+		</div>
+		{% else %}
+			<table width="100%">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Zamówiono w dniu</td>
+						<td>Filmy</td>
+						<td>Wartość</td>
+						<td>Status</td>
+					</tr>
+				</thead>
+			<tbody>
+			{% for entity in entities %}
+				<tr>
+					<td>{{ entity.id }}</td>
+					<td>{% if entity.orderedAt %}{{ entity.orderedAt|date('Y-m-d') }}{% endif %}</td>
+                
+					<td>
+						<ul>
+						{% for movie in entity.movies %}
+							<li>{{ movie.title }} 
+									{% if entity.status == 0 %}
+									{% elseif entity.status == 1 %}- <a href=""><b><u>Oglądaj</b></u></a></li>
+									{% endif %}
+					
+						{% endfor %}
+						</ul>
+					</td>
+					<td> {{ entity.valuePLN }} zł</td>
+					<td>{% if entity.status == 0 %}Nieopłacone<br><a href="{{ path('project_payment_pay', {'id': entity.id, 'value': entity.valuePLN, 'name': app.user.imie, 'surname': app.user.nazwisko, 'email': app.user.email}) }}" target="_blank">Zapłać</a>
+						<a href="{{ path('project_orders_accepted', {'id': entity.id}) }}" ><br>Zapłać bez handlera</a>
+						{% elseif entity.status == 1 %}Zrealizowane
+						
+					{% endif %}
+					</td>
+					</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		{% endif %}
+    </div> 
+    {% endblock %}

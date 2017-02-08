@@ -19,9 +19,40 @@ class DefaultController extends Controller
 
         $categories = $em->getRepository('ProjectBundle:Category')->findAll();
 		
+		$lastmovies = $em->getRepository('ProjectBundle:Movie')->findBy(
+																	array(),
+																	array('createdAt' => 'DESC'),
+																	3
+																	);
+		$bestmovies = $em->getRepository('ProjectBundle:Movie')->findBy(
+																	array(),
+																	array('stars' => 'DESC'),
+																	3
+																	);
 		
         return $this->render('ProjectBundle:Default:index.html.twig', array(
 			'categories' => $categories,
+			'movies' => $lastmovies,
+			'bestmovies' => $bestmovies,
+		));
+    }
+	
+	// 12 najnowszych filmów - Piotr Kozak
+    public function latestAction()
+    {
+		$em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('ProjectBundle:Category')->findAll();
+		
+		$lastmovies = $em->getRepository('ProjectBundle:Movie')->findBy(
+																	array(),
+																	array('createdAt' => 'DESC'),
+																	12
+																	);
+		
+        return $this->render('ProjectBundle:Default:last.html.twig', array(
+			'categories' => $categories,
+			'movies' => $lastmovies,
 			
 		));
     }

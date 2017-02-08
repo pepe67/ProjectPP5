@@ -1,0 +1,41 @@
+{% extends "ProjectBundle::layout.html.twig" %}
+{% block title %}Zamówienie{% endblock %}
+
+
+{% block content %}
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Orderedat</th>
+                <td>{{ entity.orderedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+			<tr>
+                <th>Filmy</th>
+                <td>{% for movie in entity.movies %}
+					{{ movie.title }}
+					{% endfor %}
+				</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('project_orders') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('project_orders_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

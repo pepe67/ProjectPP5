@@ -8,3 +8,8 @@ services:
             - { name: form.type, alias: acme_user_registration }
      cart.service:
          class: ProjectBundle\Controller\CartController
+     payment.handler:
+        class: ProjectBundle\Payment\PaymentHandler
+        arguments:
+            - %dotpay_id%
+            - %dotpay_pin%

@@ -79,3 +79,11 @@ fos_user:
     registration:
         form:
             type: acme_user_registration
+# Logi dotpay
+monolog:
+    channels: ["dotpay"]
+    handlers:
+        dotpay:
+            type: stream
+            path: %kernel.root_dir%/logs/dotpay.log
+            channels: ["dotpay"]

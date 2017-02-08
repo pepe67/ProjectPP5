@@ -20,3 +20,16 @@ project_cart:
 project_comment:
     resource: "@ProjectBundle/Resources/config/routing/comment.yml"
     prefix:   /comment
+project_orders:
+    resource: "@ProjectBundle/Resources/config/routing/orders.yml"
+    prefix:   /orders
+project_latest_movies:
+    path:    /latest
+    defaults: { _controller: ProjectBundle:Default:latest }
+project_payment_pay:
+    path:   /payment/pay/{id}/{value}/{name}/{surname}/{email}
+    defaults: { _controller: ProjectBundle:Payment:pay }
+    methods:  [GET]
+project_payment_handle:
+    path:   /payment/handle
+    defaults: { _controller: ProjectBundle:Payment:receivePayment }
