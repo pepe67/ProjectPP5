@@ -1,0 +1,18 @@
+{% extends "ProjectBundle::layout.html.twig" %}
+{% block title %}Weryfikacja{% endblock %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="section group">
+<div class="col span_1_of_3"></div>
+<div class="col span_1_of_3">
+<div class="login-form">
+<h2>Weryfikacja</h2>
+<p>
+{{ 'resetting.check_email'|trans({'%email%': email}) }}
+</p>
+</div>
+<div class="col span_1_of_3"></div>
+</div>
+</div>
+{% endblock %}

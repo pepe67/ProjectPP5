@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<head>
+<title>Movie4U | {% block title %}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="{{ asset('bundles/project/css/style.css') }}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{{ asset('bundles/project/css/slider.css') }}" rel="stylesheet" type="text/css" media="all"/>
+<script type="text/javascript" src="{{ asset('bundles/project/js/jquery-1.7.2.min.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('bundles/project/js/move-top.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/project/js/easing.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/project/js/startstop-slider.js') }}"></script>
+</head>
+<body>
+  <div class="wrap">
+	<div class="header">
+		<div class="headertop_desc">
+			<div class="account_desc">
+				<ul>
+					 {% if app.user.username is defined %}
+						<li><a href="/cart">Koszyk</a></li>
+						<li><a href="/profile">Moje konto</a></li>
+						<li><a href="/orders">Moje zamówienia</a></li>
+						<li><a href="/logout">Wyloguj</a></li>
+					{% else %}
+						<li><a href="/register">Zarejestruj się</a></li>
+						<li><a href="/login">Zaloguj</a></li>
+					{% endif %}					
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="header_top">
+			<div class="logo">
+				<a href="/"><img src="{{ asset('bundles/project/images/logo.png') }}" alt="" /></a>
+			</div>
+			  <div class="cart">
+			  	   <p>Witaj 
+				   {% if app.user.username is defined %}
+						{{ app.user.username }}
+					{% else %}
+						Gościu
+					{% endif %}
+				   ! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
+			  	   	<ul class="dropdown">
+							<li>you have no items in your Shopping cart</li>
+					</ul></div></p>
+			  </div>
+			  <script type="text/javascript">
+			function DropDown(el) {
+				this.dd = el;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						event.stopPropagation();
+					});	
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#dd') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-2').removeClass('active');
+				});
+
+			});
+
+		</script>
+	 <div class="clear"></div>
+  </div>
+	<div class="header_bottom">
+	     	<div class="menu">
+	     		<ul>
+			    	<li class="active"><a href="index.html">Home</a></li>
+			    	<li><a href="about.html">O nas</a></li>
+			    	<li><a href="contact.html">Kontakt</a></li>
+					{% if app.user.username is defined %}
+						<li><a href="/cart">Koszyk</a></li>
+						<li><a href="/profile">Moje konto</a></li>
+						<li><a href="/logout">Wyloguj</a></li>
+					{% else %}
+						<li><a href="/login">Zaloguj</a></li>
+					{% endif %}	
+			    	<div class="clear"></div>
+     			</ul>
+	     	</div>
+	     	<div class="search_box">
+	     		<form>
+	     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+	     		</form>
+	     	</div>
+	     	<div class="clear"></div>
+	     </div>
+	</div>
+
+
+		<div class="main">
+			<div class="content">
+				{% block content %}
+				{% block fos_user_content %}{% endblock %}
+				{% endblock %}
+			
+			</div>
+</div>
+</div>
+ <div class="clear"></div>
+</div>
+   <div class="footer">
+   	  <div class="wrap">	
+	     <div class="section group">
+				<div class="col_1_of_4 span_1_of_4">
+						<h4>Informacje</h4>
+						<ul>
+						<li><a href="/about">O nas</a></li>
+						<li><a href="/contact">Kontakt</a></li>
+						<li><a href="/delivery">Dostawa i zworty</a></li>
+						</ul>
+					</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>Dlaczego my?</h4>
+						<ul>
+						<li><span>Bo tak!</span></li>
+						<li><span>Wiemy, że nas kochasz!</span></li>
+						<li><span>Czerwony Kot</span></li>
+						<li><span>Złapał zieloną mysz</span></li>
+						<li><span>A ona uciekła</span></li>
+						</ul>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>Konto</h4>
+						<ul>
+							<li><a href="/login">Zaloguj</a></li>
+							<li><a href="/register">Zarejestruj się</a></li>
+							<li><a href="/cart">Koszyk</a></li>
+							<li><a href="/track">Śledź zamówienie</a></li>
+							<li><a href="/contact">Kontakt</a></li>
+						</ul>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>Kontakt</h4>
+						<ul>
+							<li><span>+48 222 222 222</span></li>
+							<li><span>+00-123-000000</span></li>
+						</ul>
+						<div class="social-icons">
+							<h4>Polub nas!</h4>
+					   		  <ul>
+							      <li><a href="#" target="_blank"><img src="{{ asset('bundles/project/images/facebook.png') }}" alt="" /></a></li>
+							      <li><a href="#" target="_blank"><img src="{{ asset('bundles/project/images/twitter.png') }}" alt="" /></a></li>
+							      <li><a href="#" target="_blank"><img src="{{ asset('bundles/project/images/skype.png') }}" alt="" /> </a></li>
+							      <li><a href="#" target="_blank"> <img src="{{ asset('bundles/project/images/dribbble.png') }}" alt="" /></a></li>
+							      <li><a href="#" target="_blank"> <img src="{{ asset('bundles/project/images/linkedin.png') }}" alt="" /></a></li>
+							      <div class="clear"></div>
+						     </ul>
+   	 					</div>
+				</div>
+			</div>			
+        </div>
+        <div class="copy_right">
+				<p>Movie4U © All rights Reseverd </p>
+		   </div>
+    </div>
+    <script type="text/javascript">
+		$(document).ready(function() {			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+</body>
+</html>
