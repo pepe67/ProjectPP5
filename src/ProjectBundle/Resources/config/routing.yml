@@ -14,3 +14,9 @@ project_movie:
 project_category:
     resource: "@ProjectBundle/Resources/config/routing/category.yml"
     prefix:   /category
+project_cart:
+    resource: "@ProjectBundle/Resources/config/routing/cart.yml"
+    prefix:   /cart
+project_comment:
+    resource: "@ProjectBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment

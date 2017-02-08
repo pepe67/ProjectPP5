@@ -1,9 +1,6 @@
 <?php
-
 namespace ProjectBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Comment
  *
@@ -20,7 +17,6 @@ class Comment
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
 	
 	/**
       * @ORM\ManyToOne(targetEntity="Movie", inversedBy="comments")
@@ -35,15 +31,20 @@ class Comment
      * @ORM\Column(name="comment", type="text")
      */
     private $comment;
-
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="nickname", type="text")
+     */
+    private $nickname;
+	
     /**
      * @var boolean
      *
      * @ORM\Column(name="isAccepted", type="boolean")
      */
     private $isAccepted;
-
-
     /**
      * Get id
      *
@@ -53,7 +54,6 @@ class Comment
     {
         return $this->id;
     }
-
     /**
      * Set comment
      *
@@ -63,10 +63,8 @@ class Comment
     public function setComment($comment)
     {
         $this->comment = $comment;
-
         return $this;
     }
-
     /**
      * Get comment
      *
@@ -76,7 +74,28 @@ class Comment
     {
         return $this->comment;
     }
-
+	
+	/**
+     * Set nickname
+     *
+     * @param string $nickname
+     * @return Nickname
+     */
+	 public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+        return $this;
+    }
+    /**
+     * Get nickname
+     *
+     * @return string 
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+	
     /**
      * Set isAccepted
      *
@@ -86,10 +105,8 @@ class Comment
     public function setIsAccepted($isAccepted)
     {
         $this->isAccepted = $isAccepted;
-
         return $this;
     }
-
     /**
      * Get isAccepted
      *
@@ -99,7 +116,6 @@ class Comment
     {
         return $this->isAccepted;
     }
-
     /**
      * Set movie
      *
@@ -109,10 +125,8 @@ class Comment
     public function setMovie(\ProjectBundle\Entity\Movie $movie = null)
     {
         $this->movie = $movie;
-
         return $this;
     }
-
     /**
      * Get movie
      *

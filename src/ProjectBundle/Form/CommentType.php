@@ -1,13 +1,13 @@
 <?php
-
+// Robert Korusz i Dawid Holko
 namespace ProjectBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 class CommentType extends AbstractType
 {
+
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -15,7 +15,9 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('comment')
+			->add('nickname','text', array('label' => 'Nick:', 'required' => true))
+            ->add('comment', 'textarea', array(
+					'label' => 'Treść komentarza:'))
             ->add('isAccepted', 'checkbox', array('required' => false,))
             ->add('movie', 'entity', array(
 					'label' => 'Nazwa filmu:',
@@ -40,7 +42,6 @@ class CommentType extends AbstractType
             'data_class' => 'ProjectBundle\Entity\Comment'
         ));
     }
-
     /**
      * @return string
      */

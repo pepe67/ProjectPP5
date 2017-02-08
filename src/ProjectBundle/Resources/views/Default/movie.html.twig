@@ -2,16 +2,8 @@
 {% block title %}{{ movie.title }}{% endblock %}
 
 {% block content %}
-<div class="header_bottom_left">				
-	<div class="categories">
-		<ul>
-			<h3>Kategorie</h3>
-			{% for category in categories %}
-				<li><a href="/category/{{category.name}}/show">{{category.name}}</a></li>
-			{% endfor %}
-		</ul>
-	</div>					
-</div>
+{% include 'ProjectBundle:Default:menu.html.twig' %}
+
 <div class="header_bottom_right">					 
 	<div class="content_top">
 		<div class="heading">
@@ -21,49 +13,6 @@
 </div>
 
 <div class="section group">
-
-    <!--<h1>Thread</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ movie.id }}</td>
-            </tr>
-			<tr>
-                <th>CatId</th>
-                <td>{{ movie.category }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ movie.title }}</td>
-            </tr>
-            <tr>
-                <th>About</th>
-                <td>{{ movie.aboutmovie }}</td>
-            </tr>
-            <tr>
-                <th>Review</th>
-                <td>{{ movie.review }}</td>
-            </tr>
-			<tr>
-                <th>URL</th>
-                <td>{{ movie.posterURL }}</td>
-            </tr>
-			<tr>
-                <th>Price</th>
-                <td>{{ movie.price }}</td>
-            </tr>
-			<tr>
-                <th>Released</th>
-                <td>{{ movie.released|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{{ movie.createdAt|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>-->
 	
 	<div class="cont-desc">
 				  <div class="product-details">				
@@ -86,7 +35,7 @@
 					</div>
 
 				<div class="share-desc">
-					<div class="button"><span><a href="#">Dodaj do koszyka</a></span></div>					
+					<div class="button"><span><a href="{{ path('project_setCart', {'id': movie.id}) }}">Dodaj do koszyka</a></span></div>					
 					<div class="clear"></div>
 				</div>
 
@@ -114,46 +63,28 @@
 
 				<div class="review">
 					
-					
-					<ul>
-			<h3>Komentarze</h3>
-			{% for commentvar in comments %}
-				{% if commentvar.isAccepted %}
-					<li>{{commentvar.comment}}</li>
-				{% endif %}
-			{% endfor %}
-			{{ form(formcomment) }}
-			
-		</ul>
-					
-					
-					{#<h4>Lorem ipsum Review by <a href="#">Finibus Bonorum</a></h4>
-					 #<ul>
-					 	#<li>Price :<a href="#"><img src="images/price-rating.png" alt="" /></a></li>
-					 	#<li>Value :<a href="#"><img src="images/value-rating.png" alt="" /></a></li>
-					 	#<li>Quality :<a href="#"><img src="images/quality-rating.png" alt="" /></a></li>
-					 #</ul>
-					 #<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since #the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-				  <div class="your-review">
-				  	 <h3>How Do You Rate This Product?</h3>
-				  	  <p>Write Your Own Review?</p>
-				  	  <form>
-					    	<div>
-						    	<span><label>Nickname<span class="red">*</span></label></span>
-						    	<span><input type="text" value=""></span>
-						    </div>
-						    <div><span><label>Summary of Your Review<span class="red">*</span></label></span>
-						    	<span><input type="text" value=""></span>
-						    </div>						
-						    <div>
-						    	<span><label>Review<span class="red">*</span></label></span>
-						    	<span><textarea> </textarea></span>
-						    </div>
-						   <div>
-						   		<span><input type="submit" value="SUBMIT REVIEW"></span>
-						  </div>
-					    </form>
-				  	 </div>	#}			
+					 <h4>Komentarze</h4>
+					 
+				
+					{% for commentvar in comments %}
+						{% if commentvar.isAccepted %}
+							
+							<p> &#149; <font color="red" style="italic"> {{commentvar.nickname}}:</font><br> {{commentvar.comment}} </p>
+						{% endif %}
+					{% endfor %}
+					</ul>
+					<div class="clear"></div>
+					<div class="your-review">
+					<h4>Dodaj swój komentarz</h4>
+							{# {{ form(formcomment) }} #}
+							{{ form_start(formcomment) }}
+								<div style="visibility: hidden>
+									{{ form_widget(formcomment.isAccepted) }}
+								</div>
+								{{ form_rest(formcomment) }}
+							{{ form_end(formcomment) }}
+							 
+					 </div>			
 				</div>
 			</div>
 		 </div>

@@ -1,0 +1,70 @@
+{% extends "ProjectBundle::layout.html.twig" %}
+{% block title %}Koszyk{% endblock %}
+
+{% block content %}
+
+	<div class="section group">
+		<div class="content_top">
+			<div class="heading">
+				<h3>Koszyk </h3>
+			</div>
+		<div class="clear"></div>
+		</div>
+		
+	{% set counter = 1 %}
+		<div class="section group">
+		
+		{% if licznik == 0 %}
+			<div class="section group">
+		<div class="content_top">
+			
+				<span>Koszyk jest pusty!</span>
+			
+		<div class="clear"></div>
+		</div>
+		{% else %}
+			
+				<table width="100%">
+					<thead>
+						<tr align="center">
+							<td>Lp</td>
+							<td>Tytuł</td>
+							<td>Kategoria</td>
+							<td>Cena</td>
+							<td>Usuń</td>
+						</tr>
+					</thead>
+					<tbody>
+			{% for movie in movies %}
+				<tr>
+					<td>{{ counter }}</td>
+					<td>{{ movie.title }}</td>
+					<td>{{ movie.category }}</td>
+					<td>{{ movie.price }} zł</td>
+					<td><a href="{{ path('project_delCart', {'id': movie.id}) }}">Usuń</a></td>
+				</tr>
+				{% set counter = counter + 1 %}
+				{% endfor %}
+				</tbody>
+				
+			</table>
+					
+					<div class="clear"></div>
+						<div class="add-cart">								
+							<h4><a href="{{ path('project_clearCart') }}">Wyczyść Koszyk</a></h4>
+						</div>
+						<div class="clear"></div>
+					<div class="col span_1_of_3"></div>
+					<div class="col span_1_of_3">
+						{% if app.user.username is defined %}
+							<a href="{{ app.request.basepath }}/app_dev.php/#">zapłać</a>
+						{% else %}
+							<span>Nie masz konta? <a href="{{ path('fos_user_registration_register') }}">Zarejestruj się</a></span>
+							<span><br>Masz konto? <a href="{{ path('fos_user_security_login') }}">Zaloguj się</a></span>
+						{% endif %}
+					</div>
+					<div class="col span_1_of_3"></div>
+		{% endif %}
+		</div>	
+	</div>	
+{% endblock %}

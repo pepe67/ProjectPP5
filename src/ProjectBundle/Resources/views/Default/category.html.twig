@@ -3,16 +3,8 @@
 
 {% block content %}
 
-<div class="header_bottom_left">				
-	<div class="categories">
-		<ul>
-			<h3>Kategorie</h3>
-			{% for category in categories %}
-				<li><a href="/category/{{category.name}}/show">{{category.name}}</a></li>
-			{% endfor %}
-		</ul>
-	</div>					
-</div>
+{% include 'ProjectBundle:Default:menu.html.twig' %}
+
 <div class="header_bottom_right">					 
 	<div class="content_top">
 		<div class="heading">
@@ -30,14 +22,14 @@
             
                 
 				<div class="grid_1_of_3 images_1_of_3">        
-		<a href="/movie/{{ movie.slug }}/show"><h2>{{ movie.title }} </h2><img src="{{ movie.posterURL }}" alt="{{ movie.title }}" />
+		<a href="{{ path('movie_show_by_slug', {'slug': movie.slug}) }}"><h2>{{ movie.title }} </h2><img src="{{ movie.posterURL }}" alt="{{ movie.title }}" />
 		 </a>
 		<div class="price-details">
 			<div class="price-number">
-				<p><span class="rupees">{{ movie.price }} PLN</span></p>
+				<p><span class="rupees">{{ movie.price }} zł</span></p>
 			 </div>
 			<div class="add-cart">								
-				<h4><a href="preview.html">Dodaj do koszyka</a></h4>
+				<h4><a href="{{ path('project_setCart', {'id': movie.id}) }}">Dodaj do koszyka</a></h4>
 			</div>
 			<div class="clear"></div>
 		</div>
