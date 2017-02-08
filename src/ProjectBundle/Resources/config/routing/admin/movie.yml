@@ -1,6 +1,18 @@
 admin_movie:
     path:     /
     defaults: { _controller: "ProjectBundle:Movie:index" }
+
+admin_movie_show:
+    path:     /{id}/show
+    defaults:  
+        _controller: "ProjectBundle:Movie:show"
+    requirements:
+        id: \d+ 
+
+admin_movie_show_by_slug:
+    path:     /{slug}/show
+    defaults: { _controller: "ProjectBundle:Default:movieBySlug" }
+
 admin_movie_new:
     path:     /new
     defaults: { _controller: "ProjectBundle:Movie:new" }

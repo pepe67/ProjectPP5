@@ -51,7 +51,7 @@
 						</ul>
 					</td>
 					<td> {{ entity.valuePLN }} zł</td>
-					<td>{% if entity.status == 0 %}Nieopłacone<br><a href="{{ path('project_payment_pay', {'id': entity.id, 'value': entity.valuePLN, 'name': app.user.imie, 'surname': app.user.nazwisko, 'email': app.user.email}) }}" target="_blank">Zapłać</a>
+					<td>{% if entity.status == 0 %}Nieopłacone<br><a href="{# path('project_payment_pay', {'id': entity.id, 'value': entity.valuePLN, 'name': app.user.imie, 'surname': app.user.nazwisko, 'email': app.user.email}) #}" target="_blank">Zapłać</a>
 						<a href="{{ path('project_orders_accepted', {'id': entity.id}) }}" ><br>Zapłać bez handlera</a>
 						{% elseif entity.status == 1 %}Zrealizowane
 						

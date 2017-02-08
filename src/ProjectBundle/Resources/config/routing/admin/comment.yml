@@ -1,0 +1,30 @@
+admin_comment:
+    path:     /
+    defaults: { _controller: "ProjectBundle:Comment:index" }
+
+admin_comment_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProjectBundle:Comment:show" }
+
+admin_comment_new:
+    path:     /new
+    defaults: { _controller: "ProjectBundle:Comment:new" }
+
+admin_comment_create:
+    path:     /create
+    defaults: { _controller: "ProjectBundle:Comment:create" }
+    methods:  POST
+
+admin_comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ProjectBundle:Comment:edit" }
+
+admin_comment_update:
+    path:     /{id}/update
+    defaults: { _controller: "ProjectBundle:Comment:update" }
+    methods:  [POST, PUT]
+
+admin_comment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ProjectBundle:Comment:delete" }
+    methods:  [POST, DELETE]

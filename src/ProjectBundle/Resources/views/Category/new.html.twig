@@ -1,13 +1,13 @@
-{% extends '::base.html.twig' %}
+{% extends 'ProjectBundle::layout.html.twig' %}
 
-{% block body -%}
+{% block content %}
     <h1>Category creation</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('category') }}">
+        <a href="{{ path('admin_category') }}">
             Back to the list
         </a>
     </li>
