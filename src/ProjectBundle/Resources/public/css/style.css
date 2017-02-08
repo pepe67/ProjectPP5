@@ -282,7 +282,7 @@ body {
 .content h2 {
 	color: #383838;
 	margin-bottom: 0.5em;
-	font-size: 1.5em;
+	font-size: 1.0em;
 	line-height: 1.2;
 	font-family: 'ambleregular';
 	font-weight: normal;
@@ -563,6 +563,7 @@ body {
 	display: block;
 	float: left;
 	clear: both;
+	width: 100%;
 }
 .rightsidebar {
 	display: block;
@@ -1050,6 +1051,10 @@ body {
 	display: block;
 	float:left;
 	margin: 1% 0 1% 1.6%;
+	box-shadow: 0px 0px 3px rgb(150, 150, 150);
+	-webkit-box-shadow: 0px 0px 3px rgb(150, 150, 150);
+	-moz-box-shadow: 0px 0px 3px rgb(150, 150, 150);
+	-o-box-shadow: 0px 0px 3px rgb(150, 150, 150);
 }
 .grid_1_of_3:first-child { 
 	margin-left: 0; 
@@ -1234,8 +1239,8 @@ body {
 	padding: 1.5%;
 }
 .span_2_of_3  h2, .span_1_of_3  h2 {
-	margin-bottom: 0.5em;
-	line-height: 1.2;
+	margin-bottom: 0px;
+	line-height: 1.0;
 	font-family: 'ambleregular';
 	font-weight: normal;
 	margin-top: 0px;

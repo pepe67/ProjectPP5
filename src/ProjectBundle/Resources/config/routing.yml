@@ -1,3 +1,7 @@
+project_comment:
+    resource: "@ProjectBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
 project_homepage:
     path:     /
     defaults: { _controller: ProjectBundle:Default:index }

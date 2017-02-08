@@ -1,37 +1,25 @@
-category:
+admin_category:
     path:     /
     defaults: { _controller: "ProjectBundle:Category:index" }
-
-category_show:
-    path:     /{id}/show
-    defaults:  
-        _controller: "ProjectBundle:Category:show"
-    requirements:
-        id: \d+ 
-
-category_show_by_name:
-    path:     /{name}/show
-    defaults: { _controller: "ProjectBundle:Default:category" }
-
-category_new:
+admin_category_new:
     path:     /new
     defaults: { _controller: "ProjectBundle:Category:new" }
 
-category_create:
+admin_category_create:
     path:     /create
     defaults: { _controller: "ProjectBundle:Category:create" }
     requirements: { _method: post }
 
-category_edit:
+admin_category_edit:
     path:     /{id}/edit
     defaults: { _controller: "ProjectBundle:Category:edit" }
 
-category_update:
+admin_category_update:
     path:     /{id}/update
     defaults: { _controller: "ProjectBundle:Category:update" }
     requirements: { _method: post|put }
 
-category_delete:
+admin_category_delete:
     path:     /{id}/delete
     defaults: { _controller: "ProjectBundle:Category:delete" }
     requirements: { _method: post|delete }
