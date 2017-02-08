@@ -1,6 +1,12 @@
 project_homepage:
     path:     /
     defaults: { _controller: ProjectBundle:Default:index }
+project_admin:
+    resource: "@ProjectBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin
 project_movie:
     resource: "@ProjectBundle/Resources/config/routing/movie.yml"
     prefix:   /movie
+project_category:
+    resource: "@ProjectBundle/Resources/config/routing/category.yml"
+    prefix:   /category

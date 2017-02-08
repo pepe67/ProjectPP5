@@ -16,6 +16,10 @@
 		<div class="headertop_desc">
 			<div class="account_desc">
 				<ul>
+					{% if is_granted("ROLE_ADMIN") %}
+						<li><a href="/admin"><b>Panel Administracyjny<b></a></li>
+					{% endif %}
+						
 					 {% if app.user.username is defined %}
 						<li><a href="/cart">Koszyk</a></li>
 						<li><a href="/profile">Moje konto</a></li>
